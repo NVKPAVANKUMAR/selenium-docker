@@ -12,24 +12,24 @@ public class FindFlightPage {
     private WebDriver driver;
     private WebDriverWait wait;
 
-    @FindBy(name = "reserveFlights")
+    @FindBy(xpath = "//input[@name='findFlights']")
     private WebElement firstSubmitBtn;
 
     @FindBy(name = "buyFlights")
     private WebElement secondSubmitBtn;
 
-    public FindFlightPage(WebDriver driver){
+    public FindFlightPage(WebDriver driver) {
         this.driver = driver;
         this.wait = new WebDriverWait(driver, 30);
         PageFactory.initElements(driver, this);
     }
 
-    public void submitFindFlightPage(){
+    public void submitFindFlightPage() {
         this.wait.until(ExpectedConditions.elementToBeClickable(this.firstSubmitBtn));
         this.firstSubmitBtn.click();
     }
 
-    public void goToFlightConfirmationPage(){
+    public void goToFlightConfirmationPage() {
         this.wait.until(ExpectedConditions.elementToBeClickable(this.secondSubmitBtn));
         this.secondSubmitBtn.click();
     }

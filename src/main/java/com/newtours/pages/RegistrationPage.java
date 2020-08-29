@@ -12,7 +12,7 @@ public class RegistrationPage {
     private WebDriver driver;
     private WebDriverWait wait;
 
-    @FindBy(name = "firstName")
+    @FindBy(xpath = "//input[@name='firstName']")
     private WebElement firstNameTxt;
 
     @FindBy(name = "lastName")
@@ -27,32 +27,32 @@ public class RegistrationPage {
     @FindBy(name = "confirmPassword")
     private WebElement confirmPasswordTxt;
 
-    @FindBy(name = "register")
+    @FindBy(xpath = "//input[@name='submit']")
     private WebElement submitBtn;
 
-    public RegistrationPage(WebDriver driver){
+    public RegistrationPage(WebDriver driver) {
         this.driver = driver;
         this.wait = new WebDriverWait(driver, 30);
         PageFactory.initElements(driver, this);
     }
 
-    public void goTo(){
-        this.driver.get("http://newtours.demoaut.com/mercuryregister.php");
+    public void goTo() {
+        this.driver.get("http://demo.guru99.com/selenium/newtours/register.php");
         this.wait.until(ExpectedConditions.visibilityOf(this.firstNameTxt));
     }
 
-    public void enterUserDetails(String firstName, String lastName){
+    public void enterUserDetails(String firstName, String lastName) {
         this.firstNameTxt.sendKeys(firstName);
         this.lastNameTxt.sendKeys(lastName);
     }
 
-    public void enterUserCredentials(String username, String password){
+    public void enterUserCredentials(String username, String password) {
         this.usernameTxt.sendKeys(username);
         this.passwordTxt.sendKeys(password);
         this.confirmPasswordTxt.sendKeys(password);
     }
 
-    public void submit(){
+    public void submit() {
         this.submitBtn.click();
     }
 
